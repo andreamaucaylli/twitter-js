@@ -1,0 +1,36 @@
+*{
+	background: ;
+	font-family: Verdana;
+	font-size: 14px;
+	text-align: justify;
+}
+
+#contenedor {
+	margin: auto;
+	padding: 2%;
+	background-color: #369;
+	border-radius: 4%;
+}
+
+#texto {
+	border: 2px solid gray;
+	color: green;
+	display: flex;
+	margin: auto;
+	height: 50%;
+	width: 50%;
+}
+
+#publicar {
+	margin: 0 auto;
+	background-color: #09c;
+	border-radius: 2%;
+	color: white;
+	display: flex;
+
+
+}
+/*#mensaje {
+	background-color: lightgreen;
+	border: 3px solid green;
+}*/

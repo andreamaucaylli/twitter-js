@@ -21,8 +21,24 @@ window.addEventListener("load", function() {
 		boton.disabled = false;
 		var limite = 140;
 		caracteres(limite);
+		heightTextArea();
 	}) 
 
+	function heightTextArea () {
+    	var texto = document.getElementById('texto');
+    	var enters  = texto.value.match(/\n/g);
+    	var numeroEnters = enters.length;
+
+    	if (numeroEnters > 0 && texto.value.length > 0) {
+    		texto.setAttribute('rows', numeroEnters);
+			boton.disabled = false;
+		} else if (numeroEnters > 0) {
+    		texto.setAttribute('rows', numeroEnters);
+			boton.disabled = true;
+		} else {
+    		texto.setAttribute('rows', 10);
+    	}
+ 	}
 
 	function caracteres (limite) {
 		var texto = document.getElementById("texto");
@@ -39,6 +55,7 @@ window.addEventListener("load", function() {
 			contador.style.color = "yellow";
 		}
 	}
+
 });
 
 

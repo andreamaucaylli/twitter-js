@@ -1,5 +1,4 @@
 *{
-	background: ;
 	font-family: Verdana;
 	font-size: 14px;
 	text-align: justify;
@@ -21,16 +20,32 @@
 	width: 50%;
 }
 
+.contador {
+	color: black;
+	height: 20px:
+	width: 7px;
+}
+
 #publicar {
 	margin: 0 auto;
 	background-color: #09c;
 	border-radius: 2%;
 	color: white;
 	display: flex;
-
-
 }
 /*#mensaje {
 	background-color: lightgreen;
 	border: 3px solid green;
 }*/
+
+.red {
+	color: red;
+}
+
+.white {
+	color: white;
+}
+
+.yellow {
+	color: yellow;
+}

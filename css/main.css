@@ -4,34 +4,45 @@
 	text-align: justify;
 }
 
+body {
+	background: url(../img/background-colors.jpg);
+	background-position: center;
+}
+
 #contenedor {
-	margin: auto;
+	height: auto;
+	margin: 10rem;
 	padding: 2%;
 	background-color: #369;
-	border-radius: 4%;
+	border-radius: 0.8rem;
+	width: 45rem;
 }
 
 #texto {
 	border: 2px solid gray;
+	border-radius: 0.5rem;
 	color: green;
 	display: flex;
-	margin: auto;
-	height: 50%;
-	width: 50%;
+	margin: 0.5rem auto;
+	overflow: hidden;
+	width: 45rem;
 }
 
 .contador {
-	color: black;
-	height: 20px:
-	width: 7px;
+	background-color: white;
+	color: white;
+	height: 2rem;
+	padding: 2rem;
+	width: 2rem;
 }
 
 #publicar {
-	margin: 0 auto;
+	margin: 2.5rem auto;
 	background-color: #09c;
-	border-radius: 2%;
+	border-radius: 0.5rem;
 	color: white;
 	display: flex;
+	padding: 0.5rem;
 }
 /*#mensaje {
 	background-color: lightgreen;
@@ -48,4 +59,8 @@
 
 .yellow {
 	color: yellow;
+}
+
+.salto-linea {
+
 }

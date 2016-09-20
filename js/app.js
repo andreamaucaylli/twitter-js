@@ -6,6 +6,7 @@ window.addEventListener("load", function() {
     	var texto = document.getElementById("texto");
     	mensajes(texto.value);
  		texto.value = "";
+ 		boton.disabled = true;
 	});
 
 	function mensajes (texto) {
@@ -16,25 +17,28 @@ window.addEventListener("load", function() {
 	}
 
     var texto = document.getElementById("texto");
-	texto.addEventListener("keypress", function (){
+	texto.addEventListener("keyup", function (){
 		boton.disabled = false;
-		caracteres();
+		var limite = 140;
+		caracteres(limite);
 	}) 
 
-	
-	function caracteres () {
+
+	function caracteres (limite) {
 		var texto = document.getElementById("texto");
 		var cantidadCaracteres = texto.value.length;
-		var limite = 140;
 		var contador = document.getElementById("contador");
 		contador.innerHTML = limite - cantidadCaracteres;
 
-		if (cantidadCaracteres >= limite) {
-			contador.classList.add("red");
+		if (cantidadCaracteres > limite) {
+			contador.style.color = "red";
 			boton.disabled = true;
-		} else {
-			contador.classList.remove("red");
+		} else if (cantidadCaracteres > 130 && cantidadCaracteres <= limite) {
+			contador.style.color = "white";
+		} else if (cantidadCaracteres > 120 && cantidadCaracteres < 130) {
+			contador.style.color = "yellow";
 		}
 	}
 });
+
 

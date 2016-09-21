@@ -1,51 +1,69 @@
 window.addEventListener("load", function() {
     var boton = document.getElementById("publicar");
-    boton.disabled = true;
+    var texto = document.getElementById("texto");
+	contador.innerHTML = 140;
+ 	boton.disabled = true;
+
     boton.addEventListener("click", function (e){
     	e.preventDefault();
-    	var texto = document.getElementById("texto");
-    	mensajes(texto.value);
+    	var contenedorMensaje = document.createElement("div");
+    	publicar(texto.value, contenedorMensaje);
+    	hora(contenedorMensaje);
  		texto.value = "";
- 		boton.disabled = true;
+ 		contador.innerHTML = 140;
 	});
 
-	function mensajes (texto) {
-    	var contenedorMensaje = document.createElement("div");
+	function publicar (texto, contenedorMensaje) {
+ 		contenedorMensaje.classList.add("formatoMensaje");
 		contenedorMensaje.innerHTML = texto;
     	var mensajes = document.getElementById("mensaje");
     	mensajes.insertBefore(contenedorMensaje, mensaje.childNodes[0]);
 	}
 
-    var texto = document.getElementById("texto");
-	texto.addEventListener("keyup", function (){
-		boton.disabled = false;
-		var limite = 140;
-		caracteres(limite);
-		heightTextArea();
-	}) 
+	function hora (contenedorMensaje) {
+		var fecha = new Date();
+		var hora = fecha.getHours();
+		var minuto = fecha.getMinutes();
+		if(hora < 10) {
+			hora = '0' + hora;
+		}
+  		if(minuto < 10) { 
+  			minuto = '0' + minuto;
+  		}
+		var horaMensaje = hora + " : " + minuto + " ";
+		var hora = document.createElement("span");
+		hora.innerHTML = horaMensaje;
+		contenedorMensaje.insertBefore(hora, contenedorMensaje.childNodes[0]);
+	}
 
-	function heightTextArea () {
-    	var texto = document.getElementById('texto');
+    texto.addEventListener("keyup", function (){
+	boton.disabled = false;
+	var limite = 140;
+	caracteres(limite, texto);
+	//heightTextArea(texto);
+	});
+
+	/*function heightTextArea (texto) {
     	var enters  = texto.value.match(/\n/g);
+    	var sinEntersEspacios = texto.value.trim().length;
     	var numeroEnters = enters.length;
 
-    	if (numeroEnters > 0 && texto.value.length > 0) {
-    		texto.setAttribute('rows', numeroEnters);
+    	if (enters > 4 && texto.value.length > 0) {
+    		texto.setAttribute('rows', enters);
 			boton.disabled = false;
-		} else if (numeroEnters > 0) {
-    		texto.setAttribute('rows', numeroEnters);
-			boton.disabled = true;
 		} else {
-    		texto.setAttribute('rows', 10);
+    		boton.disabled = true;
     	}
- 	}
+ 	}*/
 
-	function caracteres (limite) {
-		var texto = document.getElementById("texto");
+	function caracteres (limite,texto) {
 		var cantidadCaracteres = texto.value.length;
 		var contador = document.getElementById("contador");
 		contador.innerHTML = limite - cantidadCaracteres;
 
+		if( texto.value == null || texto.length == 0 || /^\s+$/.test(texto.value) ) {
+			boton.disabled = true;
+		}
 		if (cantidadCaracteres > limite) {
 			contador.style.color = "red";
 			boton.disabled = true;
@@ -55,7 +73,6 @@ window.addEventListener("load", function() {
 			contador.style.color = "yellow";
 		}
 	}
-
 });
 
 

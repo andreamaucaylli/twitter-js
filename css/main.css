@@ -7,6 +7,9 @@
 body {
 	background: url(../img/background-colors.jpg);
 	background-position: center;
+	background-size: no-repeat;
+	display: flex;
+	align-items: center;
 }
 
 #contenedor {
@@ -21,8 +24,7 @@ body {
 #texto {
 	border: 2px solid gray;
 	border-radius: 0.5rem;
-	color: green;
-	display: flex;
+	color: darkgray;
 	margin: 0.5rem auto;
 	overflow: hidden;
 	width: 45rem;
@@ -30,8 +32,9 @@ body {
 
 .contador {
 	background-color: white;
-	color: white;
+	color: black;
 	height: 2rem;
+	margin: auto;
 	padding: 2rem;
 	width: 2rem;
 }
@@ -41,13 +44,19 @@ body {
 	background-color: #09c;
 	border-radius: 0.5rem;
 	color: white;
-	display: flex;
 	padding: 0.5rem;
 }
-/*#mensaje {
-	background-color: lightgreen;
-	border: 3px solid green;
-}*/
+
+.formatoMensaje {
+	background-color: white;
+	border: 3px solid gray;
+	border-radius: 0.8rem;
+	color: black;
+	font-size: 1.2rem;
+	margin: 0.5rem auto;
+	padding: 0.5rem;
+	width: 45rem;
+}
 
 .red {
 	color: red;

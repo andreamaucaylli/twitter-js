@@ -24,10 +24,10 @@ window.addEventListener("load", function() {
 		var fecha = new Date();
 		var hora = fecha.getHours();
 		var minuto = fecha.getMinutes();
-		if(hora < 10) {
+		if (hora < 10) {
 			hora = '0' + hora;
 		}
-  		if(minuto < 10) { 
+  		if (minuto < 10) { 
   			minuto = '0' + minuto;
   		}
 		var horaMensaje = hora + " : " + minuto + " ";
@@ -36,34 +36,18 @@ window.addEventListener("load", function() {
 		contenedorMensaje.insertBefore(hora, contenedorMensaje.childNodes[0]);
 	}
 
-    texto.addEventListener("keyup", function (){
-	boton.disabled = false;
-	var limite = 140;
-	caracteres(limite, texto);
-	//heightTextArea(texto);
+    texto.addEventListener("keydown", function (){
+		boton.disabled = false;
+		var limite = 140;
+		tweetVacio (texto);
+		caracteres (limite, texto);
 	});
 
-	/*function heightTextArea (texto) {
-    	var enters  = texto.value.match(/\n/g);
-    	var sinEntersEspacios = texto.value.trim().length;
-    	var numeroEnters = enters.length;
-
-    	if (enters > 4 && texto.value.length > 0) {
-    		texto.setAttribute('rows', enters);
-			boton.disabled = false;
-		} else {
-    		boton.disabled = true;
-    	}
- 	}*/
-
-	function caracteres (limite,texto) {
+	function caracteres (limite, texto) {
 		var cantidadCaracteres = texto.value.length;
 		var contador = document.getElementById("contador");
 		contador.innerHTML = limite - cantidadCaracteres;
 
-		if( texto.value == null || texto.length == 0 || /^\s+$/.test(texto.value) ) {
-			boton.disabled = true;
-		}
 		if (cantidadCaracteres > limite) {
 			contador.style.color = "red";
 			boton.disabled = true;
@@ -73,6 +57,31 @@ window.addEventListener("load", function() {
 			contador.style.color = "yellow";
 		}
 	}
+
+	function tweetVacio (texto) {
+		var cantidadCaracteres = texto.value.length;
+
+		if (texto.value == null || texto.length == 0 || texto.value === "" || /^\s+$/.test(texto.value)) {
+			boton.disabled = true;
+		}
+	}
+
+	texto.addEventListener("keyup", function (e) {
+		var tecla = e.keyCode;
+		heightTextArea(tecla);
+	});
+
+	function heightTextArea (tecla) {
+        if (tecla == 13) {
+            texto.rows++;
+        } else if (tecla == 8) {
+            texto.rows--;
+        }
+        if (texto.rows < 4) {
+            texto.rows = 4;    
+        }
+    }
+
 });
 
 
